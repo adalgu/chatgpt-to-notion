@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT to Notion Exporter",
+  "version": "1.0",
+  "description": "Export ChatGPT conversations to Notion database",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "web_accessible_resources": [{
+    "resources": [".env"],
+    "matches": ["<all_urls>"]
+  }],
+  "host_permissions": [
+    "https://api.notion.com/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Export to Notion"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
