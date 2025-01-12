@@ -20,6 +20,9 @@ function showNotification(message, isError = false) {
 }
 
 function extractAndExport() {
+  // Show initial message
+  showNotification('Sending to Notion...');
+
   const articles = document.querySelectorAll('article[data-testid^="conversation-turn-"]');
   
   if (articles.length > 0) {
